@@ -1,7 +1,6 @@
 # Tumor–Normal Somatic Variant Calling Pipeline
-![Python tests](https://github.com/ag48665/gatk-somatic-variant-calling-demo/actions/workflows/tests.yml/badge.svg)
 
-A compact, portfolio-ready bioinformatics project for internships in cancer genomics, precision medicine, and computational biology.
+![Python tests](https://github.com/ag48665/gatk-somatic-variant-calling-demo/actions/workflows/tests.yml/badge.svg)
 
 This repository demonstrates practical skills in:
 
@@ -93,14 +92,6 @@ examples/                  sample manifest
 tests/                     command-generation tests
 docs/                      project notes and diagram
 ```
-
-## What recruiters can see quickly
-
-- Clean Python project structure
-- Reproducible environment
-- Bioinformatics command-line tooling
-- GATK/samtools/BWA/minimap2 familiarity
-- Clear documentation in English
 
 ## Notes
 
