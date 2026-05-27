@@ -1,0 +1,8 @@
+results/
+*.bam
+*.bai
+*.vcf.gz
+*.tbi
+__pycache__/
+.pytest_cache/
+.env

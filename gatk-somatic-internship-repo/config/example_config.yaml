@@ -1,0 +1,13 @@
+reference: /path/to/reference.fa
+threads: 4
+aligner: bwa  # options: bwa, minimap2
+samples:
+  tumor:
+    name: TUMOR
+    r1: /path/to/tumor_R1.fastq.gz
+    r2: /path/to/tumor_R2.fastq.gz
+  normal:
+    name: NORMAL
+    r1: /path/to/normal_R1.fastq.gz
+    r2: /path/to/normal_R2.fastq.gz
+output_dir: results

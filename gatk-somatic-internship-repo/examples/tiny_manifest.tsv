@@ -1,0 +1,3 @@
+sample_id	sample_type	r1	r2
+TUMOR	tumor	/path/to/tumor_R1.fastq.gz	/path/to/tumor_R2.fastq.gz
+NORMAL	normal	/path/to/normal_R1.fastq.gz	/path/to/normal_R2.fastq.gz
