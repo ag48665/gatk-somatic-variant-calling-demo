@@ -79,6 +79,11 @@ gatk FilterMutectCalls \
   -V unfiltered.vcf.gz \
   -O filtered.vcf.gz
 ```
+## Dry-run example
+
+![Pipeline dry run](docs/pipeline_dry_run.png)
+
+---
 
 ## Repository structure
 
