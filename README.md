@@ -92,6 +92,18 @@ examples/                  sample manifest
 tests/                     command-generation tests
 docs/                      project notes and diagram
 ```
+## Skills demonstrated
+
+- Python software engineering
+- Command-line bioinformatics workflows
+- NGS read alignment and BAM processing
+- Somatic variant calling concepts
+- YAML-based pipeline configuration
+- Reproducible genomics workflows
+- GitHub Actions continuous integration
+- Docker containerization
+
+---
 
 ## Notes
 
