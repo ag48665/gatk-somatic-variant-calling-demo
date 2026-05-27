@@ -2,8 +2,6 @@
 
 ![Python tests](https://github.com/ag48665/gatk-somatic-variant-calling-demo/actions/workflows/tests.yml/badge.svg)
 
-![Python tests](https://github.com/ag48665/gatk-somatic-variant-calling-demo/actions/workflows/tests.yml/badge.svg)
-
 This repository demonstrates practical skills in:
 
 - Python pipeline orchestration
