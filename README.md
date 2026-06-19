@@ -2,32 +2,53 @@
 
 ![Python tests](https://github.com/ag48665/gatk-somatic-variant-calling-demo/actions/workflows/tests.yml/badge.svg)
 
-This repository demonstrates practical skills in:
+Reproducible tumor–normal somatic variant calling workflow demonstrating cancer genomics analysis using BWA, minimap2, SAMtools, GATK Mutect2, and Python-based pipeline orchestration.
 
-- Python pipeline orchestration
-- BWA and minimap2 read alignment
-- samtools BAM sorting and indexing
-- GATK Mutect2 tumor-normal somatic variant calling
-- VCF filtering and summarization
-- optional C++ utility for fast VCF filtering
+---
 
-## Why this project
+## Project Overview
 
-Somatic variant calling is a common workflow in cancer genomics. This project shows how paired tumor-normal sequencing data can be aligned, processed, and analyzed to produce filtered candidate SNVs and indels.
+Somatic variant calling is a fundamental component of cancer genomics, enabling the identification of mutations present in tumor cells but absent from matched normal tissue.
 
-It is designed as a small but realistic example of the type of work performed in genomics teams at universities, hospitals, biotech companies, and research institutes.
+This project demonstrates an end-to-end workflow for processing paired tumor–normal sequencing data, generating aligned BAM files, calling somatic variants, and producing filtered candidate SNVs and indels suitable for downstream analysis.
 
-## Public-data angle
+The repository combines bioinformatics workflow development, software engineering, and reproducible genomics practices commonly used in academic research, biotechnology, and precision oncology.
 
-The workflow is compatible with public educational datasets from U.S.-based genomics resources such as:
+---
 
-- Broad Institute / GATK public tutorial data
-- NIH / NCBI Sequence Read Archive data
-- NCI Genomic Data Commons reference workflows
+## Project Highlights
 
-No controlled-access human data are included in this repository.
+✔ Tumor–normal variant calling workflow
 
-## Pipeline overview
+✔ GATK Mutect2 somatic mutation detection
+
+✔ BWA and minimap2 alignment support
+
+✔ BAM sorting and indexing with SAMtools
+
+✔ Automated VCF filtering
+
+✔ Python workflow orchestration
+
+✔ YAML-based configuration
+
+✔ GitHub Actions CI/CD
+
+✔ Reproducible bioinformatics pipeline
+
+---
+
+## Biological Context
+
+Cancer develops through the accumulation of somatic mutations that alter cellular growth, survival, and genomic stability.
+
+Somatic variant calling workflows compare tumor sequencing data against matched normal samples to identify mutations that may contribute to cancer development and progression.
+
+This project demonstrates the computational steps required to detect these variants using widely adopted genomics tools and best practices.
+
+---
+
+## Pipeline Overview
 
 ```text
 FASTQ tumor/normal
@@ -36,7 +57,7 @@ FASTQ tumor/normal
 BWA or minimap2 alignment
       |
       v
-samtools sort + index
+SAMtools sort + index
       |
       v
 GATK Mutect2
@@ -45,25 +66,80 @@ GATK Mutect2
 GATK FilterMutectCalls
       |
       v
-filtered somatic VCF + summary table
+Filtered somatic VCF + summary table
 ```
 
-## Quick start
+---
 
-```bash
-conda env create -f environment.yml
-conda activate somatic-variant-pipeline
+## Workflow Demonstration
 
-python -m somatic_pipeline.cli run \
-  --config config/example_config.yaml
-```
+### Pipeline Dry Run
 
-The default config is a template. Replace the example paths with your FASTQ/reference files.
+![Pipeline Dry Run](docs/pipeline_dry_run.png)
 
-## Example commands produced by the pipeline
+Example execution of the workflow showing automated generation of analysis commands and processing steps.
+
+---
+
+## Key Outputs
+
+The workflow generates:
+
+* Aligned BAM files
+* Indexed BAM files
+* Raw somatic VCF files
+* Filtered somatic VCF files
+* Variant summary tables
+* Pipeline execution logs
+
+---
+
+## Public Data Compatibility
+
+The workflow is compatible with publicly available educational datasets, including:
+
+* Broad Institute GATK tutorial datasets
+* NIH / NCBI Sequence Read Archive (SRA)
+* NCI Genomic Data Commons reference workflows
+
+No controlled-access human sequencing data are included in this repository.
+
+---
+
+## Methods
+
+### Read Alignment
+
+Supported aligners:
+
+* BWA-MEM
+* minimap2
+
+### BAM Processing
+
+* Coordinate sorting
+* BAM indexing
+* Alignment quality control
+
+### Somatic Variant Calling
+
+* GATK Mutect2
+* Tumor–normal comparison
+* SNV detection
+* Indel detection
+
+### Variant Filtering
+
+* GATK FilterMutectCalls
+* Generation of high-confidence candidate variants
+
+---
+
+## Example Commands
 
 ```bash
 bwa mem -t 4 reference.fa tumor_R1.fastq.gz tumor_R2.fastq.gz | samtools sort -o tumor.bam
+
 samtools index tumor.bam
 
 gatk Mutect2 \
@@ -79,37 +155,147 @@ gatk FilterMutectCalls \
   -V unfiltered.vcf.gz \
   -O filtered.vcf.gz
 ```
-## Dry-run example
-
-![Pipeline dry run](docs/pipeline_dry_run.png)
 
 ---
 
-## Repository structure
+## Repository Structure
 
 ```text
-src/somatic_pipeline/      Python CLI and workflow code
-scripts/                   helper scripts
-cpp/                       optional C++ VCF filter
-workflows/                 runnable bash workflow templates
-config/                    example YAML config
-examples/                  sample manifest
-tests/                     command-generation tests
-docs/                      project notes and diagram
+gatk-somatic-variant-calling-demo/
+│
+├── src/
+│   └── somatic_pipeline/
+│
+├── scripts/
+│
+├── cpp/
+│
+├── workflows/
+│
+├── config/
+│
+├── examples/
+│
+├── tests/
+│
+├── docs/
+│
+└── README.md
 ```
-## Skills demonstrated
 
-- Python software engineering
-- Command-line bioinformatics workflows
-- NGS read alignment and BAM processing
-- Somatic variant calling concepts
-- YAML-based pipeline configuration
-- Reproducible genomics workflows
-- GitHub Actions continuous integration
-- Docker containerization
+---
+
+## Quick Start
+
+### Create Environment
+
+```bash
+conda env create -f environment.yml
+conda activate somatic-variant-pipeline
+```
+
+### Run Pipeline
+
+```bash
+python -m somatic_pipeline.cli run \
+  --config config/example_config.yaml
+```
+
+Replace the example file paths with local FASTQ and reference genome files.
+
+---
+
+## Technologies Used
+
+### Bioinformatics
+
+* GATK Mutect2
+* BWA
+* minimap2
+* SAMtools
+
+### Programming
+
+* Python
+* YAML
+* C++ (optional utility)
+
+### DevOps
+
+* GitHub Actions
+* Docker
+* Linux
+
+---
+
+## Potential Applications
+
+* Cancer genomics research
+* Somatic mutation discovery
+* Precision oncology workflows
+* Variant interpretation pipelines
+* Genomic biomarker studies
+* Reproducible NGS analysis
+
+---
+
+## Skills Demonstrated
+
+### Cancer Bioinformatics
+
+* Somatic variant calling
+* Tumor–normal analysis
+* NGS data processing
+* Variant filtering
+
+### Bioinformatics Engineering
+
+* Pipeline development
+* Workflow orchestration
+* Configuration management
+* Reproducible genomics workflows
+
+### Software Engineering
+
+* Python CLI development
+* Testing and validation
+* CI/CD automation
+* Modular code design
+
+### Tools
+
+* Python
+* GATK
+* BWA
+* minimap2
+* SAMtools
+* Docker
+* GitHub Actions
 
 ---
 
 ## Notes
 
-This repository is for educational and portfolio use. It is not a clinical diagnostic workflow.
+This repository is intended for educational, research, and portfolio purposes.
+
+It is not a clinical diagnostic workflow and should not be used for patient care or medical decision-making.
+
+---
+
+## Author
+
+**Agata Gabara**
+
+MSc Bioinformatics Student
+
+Research Interests:
+
+* Cancer Genomics
+* Variant Calling
+* Precision Oncology
+* NGS Analysis
+* Bioinformatics Infrastructure
+
+GitHub: https://github.com/ag48665
+
+LinkedIn: https://www.linkedin.com/in/agatha-gabara-06494a37/
